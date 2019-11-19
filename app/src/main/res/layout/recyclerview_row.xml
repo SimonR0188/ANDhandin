@@ -6,10 +6,11 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/computerGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/computerGames"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:layout_weight="1"
+         />
 
 </LinearLayout>

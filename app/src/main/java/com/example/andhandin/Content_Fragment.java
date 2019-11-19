@@ -3,11 +3,18 @@ package com.example.andhandin;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -15,17 +22,36 @@ import android.view.ViewGroup;
  */
 public class Content_Fragment extends Fragment {
 
+    RecyclerView mGamesList;
+    RecyclerView.Adapter mGamesAdapter;
 
     public Content_Fragment() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_content_, container, false);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_content_, container, false);
 
+        RecyclerView recyclerView = view.findViewById(R.id.rv);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        ArrayList<Game> games = new ArrayList<>();
+        games.add(new Game("Path of Exile"));
+        games.add(new Game("League of Legends"));
+        games.add(new Game("World of Warcraft"));
+        games.add(new Game("Path of Diablo"));
+        games.add(new Game("Counter Strike"));
+        games.add(new Game("Pokemon"));
+        games.add(new Game("Call of Duty"));
+
+
+        GamesAdapter gamesAdapter = new GamesAdapter(games);
+        recyclerView.setAdapter(gamesAdapter);
+
+        return view;
+
+    }
 }
