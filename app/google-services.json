@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "158455812129",
+    "firebase_url": "https://and-hand-in.firebaseio.com",
+    "project_id": "and-hand-in",
+    "storage_bucket": "and-hand-in.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158455812129:android:980cb7dd632bfd7cbbd360",
+        "android_client_info": {
+          "package_name": "com.example.andhandin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158455812129-oi7hnpa79teq0mas50mfn6o3jtc7854l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnduJPyKMZ5X7JZNjc2YM7Uw7zZYSSGCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158455812129-oi7hnpa79teq0mas50mfn6o3jtc7854l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

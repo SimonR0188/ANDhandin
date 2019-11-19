@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ANDhandin</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_content">Content</string>
+    <string name="nav_notes">Notes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test">test</string>
+    <string name="Notes">Notes</string>
+    <string name="notes">notes</string>
+    <string name="content">content</string>
+</resources>
