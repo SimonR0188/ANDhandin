@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNavigation;
     private FrameLayout mMainFrame;
 
-    RecyclerViewAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,23 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> Games = new ArrayList<>();
-        Games.add("League Of Legends");
-        Games.add("Path Of Exile");
-        Games.add("World Of Warcraft");
-        Games.add("Counter Strike");
-        Games.add("Path of Diablo");
+    }}
 
-
-        RecyclerView recyclerView = findViewById(R.id.computerGame);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new RecyclerViewAdapter(this, Games);
-        recyclerView.setAdapter(adapter);
-
-    }
-
-        public void onItemClick (View view,int position){
-            Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
-        }
-    }
 
