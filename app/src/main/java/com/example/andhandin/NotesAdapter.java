@@ -59,7 +59,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             super(itemView);
             title = itemView.findViewById(R.id.editText);
             description = itemView.findViewById(R.id.text_description);
-            priority = itemView.findViewById(R.id.text_description);
+            //priority = itemView.findViewById(R.id.text_description);
 
         }
 
