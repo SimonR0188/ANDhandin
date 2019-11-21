@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,25 +24,26 @@ import java.util.List;
  */
 public class Notes_Fragment extends Fragment {
     private NoteViewModel noteViewModel;
+    NotesAdapter notesAdapter;
+    private EditText editText;
 
     public Notes_Fragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_content_, container, false);
+        View view = inflater.inflate(R.layout.fragment_notes_, container, false);
 
 
         RecyclerView recyclerView1 = view.findViewById(R.id.rv_note);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        notesAdapter = new NotesAdapter();
+        recyclerView1.setAdapter(notesAdapter);
+
         noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
-
-            final NotesAdapter notesAdapter = new NotesAdapter();
-            recyclerView1.setAdapter(notesAdapter);
 
             @Override
             public void onChanged(@Nullable List<Note> notes) {
@@ -49,8 +52,18 @@ public class Notes_Fragment extends Fragment {
             }
         });
 
-
         return view;
+
+    }
+
+    public void saveNote(View v) {
+        noteViewModel.insert(new Note(editText.getText().toString(),"description",1));
+    }
+
+    public void deleteAllNotes(View v) {
+        noteViewModel.deleteAllNotes();
     }
 }
+
+
 

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder1> {
+public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
    // private ArrayList<Note> mNotes;
     private List<Note> notes = new ArrayList<>();
@@ -24,18 +24,18 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder1>
 
     @NonNull
     @Override
-    public NotesAdapter.ViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NotesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.content_item, parent, false);
-        return new ViewHolder1(view);
+        View view = inflater.inflate(R.layout.note_item, parent, false);
+        return new ViewHolder(view);
     }
 
 
-    public void onBindViewHolder(@NonNull ViewHolder1 viewHolder1, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         Note currentNote = notes.get(position);
-        viewHolder1.title.setText(currentNote.getTitle());
-        viewHolder1.description.setText(currentNote.getDescription());
-        viewHolder1.priority.setText(String.valueOf(currentNote.getPriority()));
+        viewHolder.title.setText(currentNote.getTitle());
+        viewHolder.description.setText(currentNote.getDescription());
+        viewHolder.priority.setText(String.valueOf(currentNote.getPriority()));
     }
 
     @Override
@@ -48,20 +48,21 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder1>
         notifyDataSetChanged();
     }
 
-    class ViewHolder1 extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title;
         TextView description;
         TextView priority;
 
 
-        ViewHolder1(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.note);
-            description = itemView.findViewById(R.id.note);
-            priority = itemView.findViewById(R.id.note);
+            title = itemView.findViewById(R.id.editText);
+            description = itemView.findViewById(R.id.text_description);
+            priority = itemView.findViewById(R.id.text_description);
 
         }
+
 
 
     }

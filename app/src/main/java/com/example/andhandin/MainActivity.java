@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mMainFrame =  findViewById(R.id.main_frame);
-        mMainNavigation =  findViewById(R.id.main_navigation);
+        mMainFrame = findViewById(R.id.main_frame);
+        mMainNavigation = findViewById(R.id.main_navigation);
 
 
         mMainNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }}
+    }
+
+}
 
 
