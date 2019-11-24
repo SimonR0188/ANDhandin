@@ -21,7 +21,6 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:onClick="saveNote"
             android:text="Add note" />
     </LinearLayout>
 
@@ -30,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete All"
-        android:onClick="deleteAllNotes"/>
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

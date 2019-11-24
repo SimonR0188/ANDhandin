@@ -2,9 +2,12 @@
 package com.example.andhandin;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,49 +35,74 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private BottomNavigationView mMainNavigation;
-    private FrameLayout mMainFrame;
-
-
+    FirebaseAuth mAuth;
+    EditText editTextEmail, editTextPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        mMainFrame = findViewById(R.id.main_frame);
-        mMainNavigation = findViewById(R.id.main_navigation);
+        mAuth = FirebaseAuth.getInstance();
 
+        findViewById(R.id.register).setOnClickListener(this);
+        findViewById(R.id.buttonLogIn).setOnClickListener(this);
+    }
 
-        mMainNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private void userLogin(){
+
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if(email.isEmpty()){
+            editTextEmail.setError("Email Required");
+            editTextEmail.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            editTextPassword.setError("password required");
+            editTextPassword.requestFocus();
+            return;
+        }
+        if(password.length() < 6){
+            editTextPassword.setError("password too short");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment selectedFragment = null;
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(MainActivity.this, HomeScreen.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                switch (menuItem.getItemId()) {
-
-                    case R.id.navigation_home:
-                        mMainNavigation.setItemBackgroundResource(R.color.colorPrimary);
-                        selectedFragment = new Home_Fragment();
-                        break;
-                    case R.id.navigation_content:
-                        mMainNavigation.setItemBackgroundResource(R.color.colorAccent);
-                        selectedFragment = new Content_Fragment();
-                        break;
-                    case R.id.navigation_notes:
-                        mMainNavigation.setItemBackgroundResource(R.color.colorPrimaryDark);
-                        selectedFragment = new Notes_Fragment();
-                        break;
+                }else{
+                    Toast.makeText(getApplicationContext(),"login failed",Toast.LENGTH_LONG).show();
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, selectedFragment).commit();
-                return true;
             }
         });
 
+
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.register:
+                startActivity(new Intent(this,SignUpActivity2.class));
+                break;
+
+            case R.id.buttonLogIn:
+                userLogin();
+                break;
+
+
+        }
+    }
 }
+
 
 

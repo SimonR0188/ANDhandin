@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".Home_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:gravity="center"
+        android:text="Welcome "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="50sp" />
+
 
 </FrameLayout>

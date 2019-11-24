@@ -1,6 +1,4 @@
 package com.example.andhandin;
-
-
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,17 +7,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +44,7 @@ public class Notes_Fragment extends Fragment implements View.OnClickListener {
         ButtonAdd = view.findViewById(R.id.button);
         ButtonAdd.setOnClickListener(this);
 
+
         ButtonDelete = view.findViewById(R.id.deleteAll);
         ButtonDelete.setOnClickListener(this);
 
@@ -64,25 +58,27 @@ public class Notes_Fragment extends Fragment implements View.OnClickListener {
         });
 
         return view;
-
     }
+
+
 
     @Override
     public void onClick(View view) {
-
+/*
         switch (view.getId()) {
 
             case R.id.button:
-                noteViewModel.insert(new Note(editText.getText().toString(),"description",1));
+                noteViewModel.insert(new Note(editText.getText().toString(), "description", 1));
                 break;
 
             case R.id.deleteAll:
                 noteViewModel.deleteAllNotes();
         }
-
+*/
     }
+  }
 
-}
+
 
 
 

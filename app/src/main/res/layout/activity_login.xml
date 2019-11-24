@@ -26,14 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="Login In"
+        android:text="Login Here"
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/NewSignIn"
+    <Button
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="Register Here"
-        android:textSize="20dp" />
+        android:textSize="25dp" />
 </LinearLayout>
